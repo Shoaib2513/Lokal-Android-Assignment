@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.sp
 fun OtpScreen(
     email: String,
     otp: String,
-    remainingTime: Int, // seconds
+    remainingTime: Int,
     isVerifying: Boolean,
     errorMessage: String?,
     onOtpChange: (String) -> Unit,
@@ -39,7 +39,6 @@ fun OtpScreen(
             verticalArrangement = Arrangement.Center
         ) {
 
-            // Title
             Text(
                 text = "Verify OTP",
                 style = MaterialTheme.typography.headlineLarge,
@@ -48,7 +47,6 @@ fun OtpScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Subtitle
             Text(
                 text = "We’ve sent a 6-digit code to",
                 style = MaterialTheme.typography.bodyMedium,
@@ -63,7 +61,6 @@ fun OtpScreen(
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            // OTP Input
             OutlinedTextField(
                 value = otp,
                 onValueChange = {
@@ -93,7 +90,6 @@ fun OtpScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Countdown timer
             Text(
                 text = if (remainingTime > 0)
                     "OTP expires in ${remainingTime}s"
@@ -108,7 +104,6 @@ fun OtpScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Verify Button
             Button(
                 onClick = {
                     focusManager.clearFocus()
@@ -136,7 +131,6 @@ fun OtpScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Resend OTP
             TextButton(
                 onClick = onResendClick,
                 enabled = remainingTime <= 0

@@ -21,7 +21,6 @@ class AuthViewModel(
     private var otpTimerJob: Job? = null
     private var sessionTimerJob: Job? = null
 
-    /* ---------------- LOGIN ---------------- */
 
     fun onEmailChanged(email: String) {
         _state.update {
@@ -46,8 +45,6 @@ class AuthViewModel(
             )
         }
     }
-
-    /* ---------------- OTP ---------------- */
 
     fun onOtpChanged(otp: String) {
         if (otp.length <= 6) {
@@ -135,8 +132,6 @@ class AuthViewModel(
             }
         }
     }
-
-    /* ---------------- SESSION ---------------- */
 
     private fun startSession() {
         otpTimerJob?.cancel()

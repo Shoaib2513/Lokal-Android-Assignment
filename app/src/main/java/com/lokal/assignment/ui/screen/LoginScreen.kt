@@ -39,7 +39,6 @@ fun LoginScreen(
             horizontalAlignment = Alignment.Start
         ) {
 
-            // Title
             Text(
                 text = "Welcome",
                 style = MaterialTheme.typography.headlineLarge,
@@ -48,7 +47,6 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Subtitle
             Text(
                 text = "Login with your email to continue",
                 style = MaterialTheme.typography.bodyMedium,
@@ -57,7 +55,6 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Email Input
             OutlinedTextField(
                 value = email,
                 onValueChange = onEmailChange,
@@ -83,7 +80,6 @@ fun LoginScreen(
             }
 
 
-            // Send OTP Button
             Button(
                 onClick = {
                     focusManager.clearFocus()

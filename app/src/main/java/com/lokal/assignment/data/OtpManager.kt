@@ -20,16 +20,12 @@ class OtpManager {
 
     private val otpStore: MutableMap<String, OtpData> = mutableMapOf()
 
-    /* ---------------- PUBLIC RESULT TYPE ---------------- */
-
     enum class OtpResult {
         SUCCESS,
         INVALID,
         EXPIRED,
         ATTEMPTS_EXCEEDED
     }
-
-    /* ---------------- GENERATE OTP ---------------- */
 
     fun generateOtp(email: String) {
         val otp = generateSixDigitOtp()
@@ -44,25 +40,19 @@ class OtpManager {
     }
 
 
-
-    /* ---------------- VALIDATE OTP ---------------- */
-
     fun validateOtp(email: String, enteredOtp: String): OtpResult {
         val data = otpStore[email] ?: return OtpResult.EXPIRED
 
-        // Expiry check
         if (System.currentTimeMillis() - data.createdAt > OTP_EXPIRY_MILLIS) {
             otpStore.remove(email)
             return OtpResult.EXPIRED
         }
 
-        // Attempts exhausted
         if (data.attemptsLeft <= 0) {
             otpStore.remove(email)
             return OtpResult.ATTEMPTS_EXCEEDED
         }
 
-        // OTP match
         return if (data.otp == enteredOtp) {
             otpStore.remove(email)
             OtpResult.SUCCESS
@@ -76,8 +66,6 @@ class OtpManager {
             }
         }
     }
-
-    /* ---------------- HELPERS ---------------- */
 
     private fun generateSixDigitOtp(): String {
         return Random.nextInt(100000, 999999).toString()

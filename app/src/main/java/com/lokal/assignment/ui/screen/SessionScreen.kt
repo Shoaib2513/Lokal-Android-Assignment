@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -33,7 +32,6 @@ fun SessionScreen(
             verticalArrangement = Arrangement.Center
         ) {
 
-            // Title
             Text(
                 text = "Session Active",
                 style = MaterialTheme.typography.headlineLarge,
@@ -42,7 +40,6 @@ fun SessionScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Subtitle
             Text(
                 text = "You are successfully logged in",
                 style = MaterialTheme.typography.bodyMedium,
@@ -51,7 +48,6 @@ fun SessionScreen(
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Session Info Card
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
@@ -65,7 +61,6 @@ fun SessionScreen(
                         .padding(20.dp)
                 ) {
 
-                    // Session Start Time
                     Text(
                         text = "Session started at",
                         style = MaterialTheme.typography.bodySmall,
@@ -80,7 +75,6 @@ fun SessionScreen(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // Session Duration
                     Text(
                         text = "Session duration",
                         style = MaterialTheme.typography.bodySmall,
@@ -97,7 +91,6 @@ fun SessionScreen(
 
             Spacer(modifier = Modifier.height(40.dp))
 
-            // Logout Button
             Button(
                 onClick = onLogoutClick,
                 modifier = Modifier
@@ -117,8 +110,6 @@ fun SessionScreen(
         }
     }
 }
-
-/* ---------- Helpers (UI-only, safe to keep here) ---------- */
 
 @Composable
 private fun rememberFormattedTime(timeMillis: Long): String {
